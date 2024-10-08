@@ -1,15 +1,55 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class RectangleInfo {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        //variables
+        boolean valid = false;
+        double sideOne = 0;
+        double sideTwo = 0;
+        double area = 0;
+        double perimeter = 0;
+        double diagonal = 0;
+
+        do {
+            System.out.println("Enter the length for side one.");
+            if (scan.hasNextDouble()) {
+                sideOne = scan.nextDouble();
+                if (sideOne > 0) {
+                    valid = true;
+                } else {
+                    System.out.println("You have entered an invalid value. Please try again.");
+                }
+            } else {
+                System.out.println("You have entered an invalid value. Please try again.");
+            }
+            scan.nextLine();
+        } while (!valid);
+
+        valid = false;
+        do {
+            System.out.println("Enter a value for side two.");
+            if (scan.hasNextDouble()) {
+                sideTwo = scan.nextDouble();
+                if (sideTwo > 0) {
+                    valid = true;
+                } else {
+                    System.out.println("You have entered an invalid value. Please try again.");
+                }
+            } else {
+                System.out.println("You have entered an invalid value. Please try again.");
+            }
+            scan.nextLine();
+        } while (!valid);
+
+        area = sideOne * sideTwo;
+        perimeter = (sideOne * 2) + (sideTwo * 2);
+        diagonal = Math.sqrt((Math.pow(sideOne, 2) + Math.pow(sideTwo, 2)));
+
+        System.out.printf("%-15s %10.2f", "Side 1:", sideOne);
+        System.out.printf("\n%-15s %10.2f", "Side 2:", sideTwo);
+        System.out.printf("\n%-15s %10.2f", "Area:", area);
+        System.out.printf("\n%-15s %10.2f", "Perimeter:", perimeter);
+        System.out.printf("\n%-15s %10.2f", "Diagonal:", diagonal);
     }
 }
